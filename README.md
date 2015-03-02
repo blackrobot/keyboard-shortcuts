@@ -1,2 +1,3 @@
-# keyboard-shortcuts
-A web page to remind me of keyboard shortcuts
+# Keyboard Shortcuts
+
+A repository of keyboard shortcuts that I always forget.
