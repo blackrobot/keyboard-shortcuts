@@ -36,11 +36,27 @@
     tr {
       outline: 1px solid rgba(0, 0, 0, 0);
     }
+    tr:nth-child(odd) td {
+       background-color: #f7f7f7;
+    }
     tr:hover {
        outline-color: rgba(0, 0, 0, 0.2);
     }
-    tr:hover td {
-      background-color: #e7e7e7 !important;
+    tr:hover > td {
+      background-color: #e7e7e7;
+    }
+    tr.highlight {
+      outline-color: rgba(0, 200, 255, 0.5);
+      outline-style: dotted;
+    }
+    tr.highlight td {
+      background-color: rgba(0, 200, 255, 0.1);
+    }
+    tr.highlight:hover {
+      outline-style: solid;
+    }
+    tr.highlight:hover td {
+      background-color: rgba(0, 200, 255, 0.2);
     }
     tr, td {
       transition: all 210ms ease-in-out;
@@ -88,9 +104,6 @@
       display: none;
       padding: 0;
       position: static;
-    }
-    tr:nth-child(odd) td {
-       background: #f7f7f7;
     }
   </style>
 </head>
@@ -267,5 +280,20 @@
       <td>Checks your current page for spelling and grammar</td>
     </tr>
   </table>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+  <script>
+    Zepto(function($){
+      var $rows;
+      function highlightRow(event) {
+        $(this).toggleClass('highlight');
+      }
+      function init() {
+        $rows = $('tr');
+        $rows.on('click', highlightRow);
+      }
+      init();
+    });
+  </script>
 </body>
 </html>
